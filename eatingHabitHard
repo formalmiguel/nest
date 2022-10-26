@@ -1,0 +1,84 @@
+var eatingHabits = [
+  {
+    day: 'Monday', 
+    food: ['banana', 'ice cream', 'apple', 'leaf', 'cheese']
+  },
+  {
+    day: 'Tuesday',  
+    food: ['candy', 'cake', 'ice cream', 'cheese'],
+  },
+  {
+    day: 'Wednesday', 
+    food: ['leaf', 'cheese', 'jelly', 'hamburger'],
+  },
+  {
+    day: 'Thursday',
+    food:['hamburger', 'banana', 'leaf', 'tomato'],
+  },
+  {
+    day: 'Friday',
+    food:['ice cream', 'apple', 'pie','cake'],
+  },
+  {
+    day: 'Saturday',
+    food: ['apple', 'leaf', 'pie', 'cheese', 'candy', 'tomato'],
+  }
+]
+
+//c) Finally, find the top most eaten and second most eaten food using the same data. Return an array of the food names. The top most eaten food should appear first, and the second most eaten should appear second
+
+
+//**** Do not hardcode the answer
+
+function topTwoFoods(arr) {
+ //make an obj with a count of how many times the item is seen 
+  // highest count = 0 
+  // loop obj 
+   // if obj[x] > highest count
+    // highest count = value at obj[x] //5 
+    // obj['high count'] = x
+  // empty arr
+  // empty arr . push obj[highest coutn]
+  // loop obj 
+   // if obj[y] > nhighest count
+    // nhighest count = value at obj[y] //4 
+    // obj['2nd high count'] = y
+  // empty arr.push obj[secnd];
+  // return empty arr
+  var obj = {};
+  for(var i =0; i<arr.length; i++) {
+    for(var j =0; j< arr[i].food.length; j++) {
+      if(obj[arr[i].food[j]] === undefined) {
+       obj[arr[i].food[j]] = 1
+      } else {
+        obj[arr[i].food[j]] ++
+      }
+    }
+  }
+  // make the obj with counts
+  var hi = 0;
+  for(var x in obj) {
+    if(obj[x] > hi) {
+      hi = obj[x]
+      obj['hi'] = x;
+    }
+  }
+  delete obj[obj['hi']];
+  // identify key with highest count; assign key to be value of 'highest count'; delete key w/ value
+  var hi2 = 0; 
+  for(var y in obj) {
+   if(obj[y] > hi2) {
+      hi2 = obj[y]
+      obj['hi2'] = y;
+    }
+  }
+  //identify key with 2nd highest count; assign key to be value of '2nd highest count';
+  if(hi === hi2){
+   return 'tie between ' +obj['hi']+ ' & '+ obj['hi2']
+  } else { 
+    return [obj['hi'], obj['hi2']]
+  }
+  // return an array with highest count and 2nd highest count 
+}
+
+console.log(topTwoFoods(eatingHabits)); // => ['leaf', 'cheese'];
