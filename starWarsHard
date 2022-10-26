@@ -1,0 +1,62 @@
+// /* FIND THIRD LARGEST VALUE IN AN ARRAY OF OBJECTS */
+// //take an array of movie objects and return the third highest rotten tomato rating as a percentage and the release Year 
+
+// function thirdTopRatedMovie (arr){
+//  var sorted = starWars.sort(function compareNumbers(a, b) {
+//   return b.rating - a.rating;
+// })
+// return [(sorted[2].rating * 100) + '%', sorted[2].releaseYear]
+// }
+// helper function 
+function removeTop (a) {
+  var num = 0;
+  var index = 0;
+ for(var i = 0; i < a.length ; i++) {
+   if(a[i].rating > num ) {
+     num = a[i].rating;
+     index = i;
+   }
+ }
+ a.splice(index,1)
+ return a; 
+}
+
+function thirdTopRatedMovie (arr){
+  var count = 0
+  while (count < 2) {
+    removeTop(arr);
+    count++;
+  }
+  var high = 0;
+  var ans = [];
+  for(var j= 0; j< arr.length; j++) {
+    if(arr[j].rating > high) {
+      high = arr[j].rating;
+      ans = arr[j];
+    }
+  }
+  return [ans.rating, ans.releaseYear];
+}
+
+
+
+var starWars = [
+  {title: 'Episode IV: A New Hope', releaseYear: 1977, rating: 0.92},  //rated #3 return rating as a % and the realse year
+  {title: 'Episode V: The Empire Strikes Back', releaseYear: 1980, rating: 0.94}, //rated #1
+  {title: 'Episode VI: Return of the Jedi', releaseYear: 1983, rating: 0.82},
+  {title: 'Episode I: The Phantom Menace', releaseYear: 1999, rating: 0.53},
+  {title: 'Episode II: Attack of the Clones', releaseYear: 2002, rating: 0.65},
+  {title: 'Episode III: Revenge of the Sith', releaseYear: 2005, rating: 0.80},
+  {title: 'Episode VII: The Force Awakens', releaseYear: 2015, rating: 0.93}, //rated #2
+  {title: 'Episode VIII: The Last Jedi', releaseYear: 2017, rating: 0.90},
+  {title: 'Episode IV: The Rise of Skywalker', releaseYear: 2019, rating: 0.51},
+  {title: 'Rogue One: A Star Wars Story', releaseYear: 2016, rating: 0.84},
+  {title: 'Solo: A Star Wars Story', releaseYear: 2018, rating: 0.70}
+]; 
+
+//console.log(removeTop(starWars));
+console.log(thirdTopRatedMovie(starWars))
+
+
+// let sortedProducts = products.sort(
+//     (p1, p2) => (p1.price < p2.price) ? 1 : (p1.price > p2.price) ? -1 : 0);
