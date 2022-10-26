@@ -1,0 +1,80 @@
+var coffeeRegions = [
+  {
+    country: 'Brazil',
+    regions: [
+      {
+        region:'Bahia', 
+        containers: 2,
+        "price per container": 1200
+      },
+      {
+        region:'São Paulo', 
+        containers: 1,
+        "price per container": 1350,
+      },
+    ],
+  },
+   {
+    country: 'Ethiopia',
+    regions: [
+      {
+        region:'Yirgacheffe', 
+        containers: 4,
+        "price per container": 1300,
+      },
+      {
+        region:'Sidamo', 
+        containers: 2,
+        "price per container": 1250,
+      },
+    ],
+  },
+  {
+    country: 'Indonesia',
+    regions: [
+      {
+        region:'Sumatra', 
+        containers: 5,
+        "price per container": 1100,
+      },
+    ]
+  }  
+]
+
+//D- average, highest, and lowest
+    //Return an object of the cheapest region, most expensive region, and average cost of coffee each coffee container rounded down to the nearest whole number
+
+  function coffeePrices (arr) {
+   var obj = {};
+   var cheap = arr[0].regions[0]["price per container"]
+   var exp = arr[0].regions[0]["price per container"]
+   var sum = 0
+   var dom = 0
+   for(var i =0; i<arr.length; i++) {
+     var curr = arr[i].regions;
+     for(var j =0; j<curr.length; j++) {
+       if(curr[j]["price per container"] > exp) {
+         exp = curr[j]["price per container"]
+         obj['most expensive region'] = curr[j].region
+       }
+       if(curr[j]["price per container"] < cheap) {
+         cheap = curr[j]["price per container"]
+         obj['cheapest region'] = curr[j].region
+       }
+       sum += curr[j]["price per container"] * curr[j]['containers'];
+       dom += curr[j]['containers']
+     }
+   }
+    obj['average'] = Math.floor(sum / dom)
+    return obj
+  }
+
+  var highLowAverage = coffeePrices(coffeeRegions);
+  console.log('coffeePrices:', highLowAverage);
+    /* 
+        {
+          'cheapest region': 'Sumatra', 
+          'most expensive region': 'São Paulo', 
+          average: 1210,
+        }
+    */
