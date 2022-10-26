@@ -1,0 +1,54 @@
+// Create a function that takes in a sentence and a character to find. Return an object of each word in the sentence, with the count of the specified character as the value.
+  
+function findOccurrences(str, char) {
+	// a string and a char
+  // o an obj with each word lower cased and count of char in word 
+  // split string in words by ' ' and lower case em
+  // empty obj result
+  // loop word
+    // charcount = 0
+   // loop letters of words
+     // if letter is the same as char increase count by 1
+   // add word to obj with letter count 
+  // return obj
+ var words = (str.toLowerCase()).split(' ');
+ var obj = {};
+ for(var i= 0; i< words.length; i++) {
+   var count = 0;
+   for(var j=0; j<words[i].length; j++) {
+     if(words[i][j] === char.toLowerCase()) {
+       count++
+     }
+   }
+   obj[words[i]] = count;
+ }
+ console.log(obj)
+}
+ findOccurrences("Hello World", "o") // ➞ {
+//   "hello" : 1,
+//   "world" : 1
+// }
+
+findOccurrences("Create a nice JUICY function", "c") //➞  {
+//   "create" : 1,
+//   "a" : 0,
+//   "nice" : 1,
+//   "juicy" : 1,
+//   "function" : 1
+// }
+
+ findOccurrences("An APPLE a day keeps an Archeologist AWAY...", "A") // ➞ {
+//   "an" : 1,
+//   "apple" : 1,
+//   "a" : 1,
+//   "day" : 1,
+//   "keeps" : 0,
+//   "archeologist" : 1,
+//   "away..." : 2
+// }
+// Notes
+
+// The function shouldn't be case sensitive.
+// Words in the dictionary should be in lowercase.
+// You may be required to find punctuation.
+// Duplicate words should be ignored (see example #3 for the word "an").
