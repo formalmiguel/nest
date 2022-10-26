@@ -1,0 +1,33 @@
+// Someone has attempted to censor my strings by replacing every vowel with a *, l*k* th*s. Luckily, I've been able to find the vowels that were removed.
+// Given a censored string and a string of the censored vowels, return the original uncensored string.
+// The vowels are given in the correct order.
+// The number of vowels will match the number of * characters in the censored string.
+function uncensor(str, vowels) {
+	// i a str w/ letters misssing and *'s as place holder and another string with the missing letters(given in order)
+  // str with all letters replaced
+  // arr for indexs 
+  // str into letters
+  // loop over letters
+   // if letter is *
+    // push index into array
+  // loop indexs 
+   // letter[ 2 = indexs[0]] = vowel [0]
+  // join letters
+  var indx = [];
+  var letters = str.split('');
+  for(var i=0; i< letters.length; i++) {
+    if(letters[i] === '*') {
+      indx.push(i);
+    }
+  }
+  for(var j= 0; j<indx.length ; j++) {
+    letters[indx[j]] = vowels[j];
+  }
+  console.log( letters.join(''))
+} 
+//        01234                      012345 2 0    str[2] vowels[0]
+uncensor("Wh*r* d*d my v*w*ls g*?", "eeioeo") //➞ "Where did my vowels go?"
+
+uncensor("abcd", "") //➞ "abcd"
+
+uncensor("*PP*RC*S*", "UEAE") //➞ "UPPERCASE"
