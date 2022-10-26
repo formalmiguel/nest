@@ -1,0 +1,38 @@
+// Create a function that takes an array of strings and returns an array with only the strings that have numbers in them. If there are no strings containing numbers, return an empty array.
+// The strings can contain white spaces or any type of characters.
+// Bonus: Try solving this without RegEx.
+function numInStr(arr) {
+	// result arry
+  // loop array 
+    // create boolean false
+   // split arry i = letters
+   // loop letters 
+    // if letter converted to number is a number
+     // boolean = true
+   // if (boolean) push arr i to result array
+  
+  var array = [];
+  for(var i =0; i<arr.length; i++) {
+    var bool = false;
+    var newArray = arr[i].split('');
+    for(var j=0; j< newArray.length; j ++) {
+     //console.log(Number(newArray[j]))
+      if( newArray[j] !== ' ' && Number(newArray[j]) > -1) {
+        bool = true;
+      }
+    }
+    if(bool) {
+      array.push(arr[i]);
+    }
+  }
+  console.log(array)
+}
+
+
+numInStr(["1a", "a", "2b", "b"])  //➞ ["1a", "2b"]
+
+numInStr(["abc", "abc10"]) //➞ ["abc10"]
+
+numInStr(["abc", "ab10c", "a10bc", "bcd"]) //➞ ["ab10c", "a10bc"]
+
+numInStr(["this is a test", "test0"]) //➞ ["test1"]
