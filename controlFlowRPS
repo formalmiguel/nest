@@ -1,0 +1,58 @@
+function calculateScore(a) {
+  // i an arry of arrays w/ r p or s first is bensons try 
+  // o winners name or tie
+	// create an obj for p r s where the value is what can beat it 
+  // v abwins = 0
+  // v benwins = 0
+  // v ties = 0
+  //loop arrays
+    // if val at i @0 is the same as 1
+      // tie add 1 to tie
+    // if value at i @ 0 beats element at 1
+     // add win to ben son 
+   // else if val at i @ 0 loses to 1 
+     // add win to ab
+  //if ties = ;length of arr 
+    // return 'tie'
+  // else if( abwins > ben wins) 
+   // return 'abigail'
+  // else 
+   // return 'benson'
+  var obj = {
+    'R':'S',
+    'P':'R',
+    'S':'P'
+  }
+  var ties = 0;
+  var ab = 0;
+  var b = 0;
+  for(var i = 0; i<a.length; i++) {
+    if(a[i][0] === a[i][1]) {
+      ties ++;   // a10 R > s          b11 s 
+    } else if (obj[a[i][0]] === a[i][1]) {
+      ab ++ 
+    } else {
+      b ++
+    }
+  }
+  console.log('ab:',ab, 'b:', b , 'ties:', ties)
+  if( ab === b) {
+    console.log('tie')
+  } else if(ab > b) {
+    console.log('Abigail') 
+  } else {
+    console.log('Benson') 
+  }
+}
+
+               // b ++  a0 b1;         a ++       a++
+calculateScore([["R", "P"], ["R", "S"], ["S", "P"]]) //➞ "Abigail"
+
+// Benson wins the first game (Paper beats Rock).
+// Abigail wins the second game (Rock beats Scissors).
+// Abigail wins the third game (Scissors beats Paper). 
+// Abigail wins 2/3.
+
+calculateScore([["R", "R"], ["S", "S"]]) //➞ "Tie"
+                 //    b      ab             t
+calculateScore([["S", "R"], ["R", "S"], ["R", "R"]]) //➞ "Tie"
