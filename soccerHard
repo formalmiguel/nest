@@ -1,0 +1,51 @@
+//Get average scores of players not including one player
+
+////Given an array of players and a name input, 
+//get the average scores of all the players that do not match the name input. 
+//Keep in mind, the same name is the same player! Round to the nearest 100th.
+
+
+var soccerPlayers = [
+  {name: 'Jess', score: 1, age: 20, game: 1},  
+  {name: 'Tyler', score: 2, age: 30, game: 2}, // t 2
+  {name: 'Kelly', score: 1, age: 25, game: 1}, // k 1
+  {name: 'Jess', score: 2, age: 20, game: 2},  
+  {name: 'Tyler', score: 2, age: 30, game: 3}, // t 2 //4
+  {name: 'Fred', score: 3, age: 26, game: 2}, // f 3
+  {name: 'Kelly', score: 1, age: 25, game: 3}, // k 1 //2  9/3 
+]
+
+
+ 
+function averageScore(arr, name) {
+  // create avgs obj 
+  // loop array
+    // if current indexd name is the same as given name skip
+    // else if arr[i]name is not in avgs obj
+     // add to avgs obj w/ score as its value
+   // else add to the score value 
+  // get object values into an array
+  // total sum = loop arry adding each value
+  // return sum / array length
+  var obj = {};
+  for(var i =0; i< arr.length; i++) {
+    if(arr[i].name === name) {
+      continue;
+    } else if(obj[arr[i].name] === undefined) {
+      obj[arr[i].name] = arr[i].score;
+    } else {
+      obj[arr[i].name] += arr[i].score;
+    }
+  }
+  var val = Object.values(obj);
+  var sum = 0;
+  for( var j =0; j<val.length ; j++) {
+    sum += val[j];
+  }
+  return Math.ceil((sum / val.length) * 100) / 100; 
+}
+
+console.log(averageScore(soccerPlayers, 'Jess')); // ==> 3 
+
+console.log(averageScore(soccerPlayers, 'Tyler')); // ==> 2.67 
+
